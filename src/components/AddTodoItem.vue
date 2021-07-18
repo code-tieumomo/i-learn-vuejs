@@ -49,7 +49,7 @@ export default {
   }
 
   div > form > input {
-    width: 430px;
+    width: 380px;
     outline: none;
     padding: 3px 5px;
   }
@@ -62,6 +62,11 @@ export default {
     outline: none;
     cursor: pointer;
     border-radius: 0;
-    width: 50px;
+    width: 100px;
+  }
+
+  div > form > button:disabled {
+    background-color: #6b705c;
+    color: #ccd5ae;
   }
 </style>

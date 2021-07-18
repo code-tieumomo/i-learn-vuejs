@@ -50,12 +50,17 @@ export default {
     }
 
     const addItem = async (newItem) => {
-      try {
-        const res = await axios.post('https://jsonplaceholder.typicode.com/todos', newItem);
+      let btnAdd = document.querySelector('.btn-add');
+      btnAdd.innerHTML = '<i class="fa fa-spinner fa-pulse"></i> Adding';
+      btnAdd.setAttribute('disabled', true);
+      await axios.post('https://jsonplaceholder.typicode.com/todos', newItem).then((res) => {
         todos.value.push(res.data);
-      } catch (error) {
+      }).catch((error) => {
         console.log(error);
-      }
+      }).then(() => {
+        btnAdd.innerHTML = 'Add';
+        btnAdd.removeAttribute('disabled');
+      });
     }
 
     return {
